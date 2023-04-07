@@ -38,6 +38,12 @@ class Graph:
     def build(self, path):
         self.buildAdjMatrix(path)
         self.buildNodeList(path)
+
+    def getAdjMatrix(self):
+        return self.__adjMatrix
+
+    def getNodeList(self):
+        return self.__nodeList
         
     # === DISPLAY  ==============================================================
     def printAdjMatrix(self):

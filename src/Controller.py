@@ -1,5 +1,6 @@
 import Parser as par
 import Graph as gr
+import UCS as ucs
 
 class Controller:
     # === CONSTRUCTOR ===========================================================
@@ -32,6 +33,11 @@ class Controller:
         
         self.__graph.printAdjMatrix()
         self.__graph.printNodeList()
+        uCs = ucs.UCS()
+        route, cost = uCs.search(self.__graph, 1, 6)
+        print(route)
+        print(cost)
+        
     
     def readAlgorithm(self):
         parser = par.Parser()
