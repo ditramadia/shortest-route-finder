@@ -7,7 +7,8 @@ controller.start()
 while(controller.isRunning()):
     
     controller.readMap()
-    # controller.readAlgorithm()
+    controller.readAlgorithm()
+    controller.solve()
     
     if True:
         controller.stop()
