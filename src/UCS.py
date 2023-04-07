@@ -38,7 +38,7 @@ class UCS:
                         break
                 
             for i in range(len(matrix[current[0] - 1])):
-                    if matrix[current[0] - 1][i] != 0 and (i + 1) not in self.visited:
+                    if matrix[current[0] - 1][i] != float("inf") and (i + 1) not in self.visited:
                         listnode[i].setParent(current[0])
                         self.queue.append([i + 1, current[1] + matrix[current[0] - 1][i]])
                         
