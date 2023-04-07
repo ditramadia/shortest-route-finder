@@ -11,3 +11,6 @@
 0 0 0 0 0 0 0 0 0 75 0 70 0
 0 0 0 0 0 0 0 0 0 0 70 0 111
 118 0 0 0 0 0 0 0 0 0 0 111 0
+
+// kalo nodenya gak nyambung jadi INF, bukan 0
+// 0 itu kalo diri sendiri

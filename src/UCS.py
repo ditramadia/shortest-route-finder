@@ -1,13 +1,19 @@
 import Graph as gp
 class UCS:
-
+    # === CONSTRUCTOR ===========================================================
     def __init__(self):
-        self.path = []
-        self.cost = 0
         self.visited = []
         self.queue = []
+        self.solution = {
+             "path" : [],
+             "cost" : None
+        }
+    
+    # === GETTER SETTER ==========================================================
+    def getSolution(self):
+        return self.solution
 
-
+    # === METHODS ===============================================================
     def search(self, graph, start, goal):
         listnode  = graph.getNodeList()
         matrix = graph.getAdjMatrix()
@@ -22,13 +28,13 @@ class UCS:
                         node = listnode[goal - 1]
                         while node != None:
                             print(node.getId())
-                            self.path.append(node.getId())
+                            self.solution["path"].append(node.getId())
                             
                             if (node.getId() == start):
                                 break
                             node = listnode[node.getParent() - 1]
-                        self.cost = current[1]
-                        self.path.reverse()
+                        self.solution["cost"] = current[1]
+                        self.solution["path"].reverse()
                         break
                 
             for i in range(len(matrix[current[0] - 1])):
@@ -37,6 +43,3 @@ class UCS:
                         self.queue.append([i + 1, current[1] + matrix[current[0] - 1][i]])
                         
             self.queue.sort(key=lambda x: x[1])
-
-        return self.path, self.cost
-
