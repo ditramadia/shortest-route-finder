@@ -6,6 +6,13 @@ class Graph:
         self.__adjMatrix = []
         self.__nodeList = []
 
+    # === GETTER SETTER =========================================================
+    def getAdjMatrix(self):
+        return self.__adjMatrix
+
+    def getNodeList(self):
+        return self.__nodeList    
+
     # === INITIALIZER ===========================================================
     def buildAdjMatrix(self, path):
         self.__adjMatrix = []
@@ -28,7 +35,6 @@ class Graph:
         file = open(f"./test/{path}.txt", "r")
         i = 1
         for line in file:
-            print(line)
             newNode = nd.Node(i)
             self.__nodeList.append(newNode)
 
@@ -45,12 +51,12 @@ class Graph:
         for row in self.__adjMatrix:
             print("[", end="")
             for element in row:
-                print(str(element) + ",", end="")
+                print(str(element) + " ", end="")
             print("]")
         print("]")
 
     def printNodeList(self):
         print("[", end="")
         for node in self.__nodeList:
-            print(str(node.id) + ",", end="")
+            print(str(node.getId()) + ",", end="")
         print("]")
