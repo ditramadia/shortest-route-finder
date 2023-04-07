@@ -1,9 +1,13 @@
 class Parser:
+    # === CONSTRUCTOR ===========================================================
     def __init__(self):
-        self.__command = None
+        self.__data = None
 
-    def read(self):
-        self.__command = str(input("> "))
+    # === GETTER SETTER =========================================================
+    def getData(self):
+        return self.__data
+
+    # === IO ====================================================================
+    def readCommand(self):
+        self.__data = str(input("> "))
         
-    def getCommand(self):
-        return self.__command
