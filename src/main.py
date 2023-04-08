@@ -5,10 +5,9 @@ controller = ct.Controller()
 
 controller.start()
 while(controller.isRunning()):
-    
+
+    controller.displaySplash()
     controller.readMap()
     controller.readAlgorithm()
     controller.solve()
-    
-    if True:
-        controller.stop()
+    controller.menu()
