@@ -1,6 +1,7 @@
 import Parser as par
 import Graph as gr
 import AStar as ast
+import UCS as ucs
 
 class Controller:
     # === CONSTRUCTOR ===========================================================
@@ -17,6 +18,31 @@ class Controller:
     # === CONTROLS ==============================================================
     def start(self):
         self.__isRunning = True
+
+    def solve(self):
+        parser = par.Parser()
+        print("Pilih Starting Node:")
+        parser.readCommand()
+        startingNode = parser.getData()
+        print("Pilih Destination Node:")
+        parser.readCommand()
+        destinationNode = parser.getData()
+
+        if self.__algorithm == "1":
+            uCs = ucs.UCS()
+            uCs.search(self.__graph, 1, 6)
+
+            print("Solusi:")
+            print("Path: " + str(uCs.getSolution()["path"]))
+            print("Distance: " + str(uCs.getSolution()["cost"]))
+
+        elif self.__algorithm == "2":
+            aStar = ast.AStar()
+            aStar.findShortestPath(self.__graph, int(startingNode), int(destinationNode))
+
+            print("Solusi:")
+            print("Path: " + str(aStar.getSolution()["path"]))
+            print("Distance: " + str(aStar.getSolution()["distance"]))
 
     def stop(self):
         self.__isRunning = False
@@ -39,19 +65,4 @@ class Controller:
         parser.readCommand()
         self.__algorithm = parser.getData()
     
-    def solve(self):
-        parser = par.Parser()
-        print("Pilih Starting Node:")
-        parser.readCommand()
-        startingNode = parser.getData()
-        print("Pilih Destination Node:")
-        parser.readCommand()
-        destinationNode = parser.getData()
 
-        if self.__algorithm == "2":
-            aStar = ast.AStar()
-            aStar.findShortestPath(self.__graph, int(startingNode), int(destinationNode))
-
-            print("Solusi:")
-            print("Path: " + str(aStar.getSolution()["path"]))
-            print("Distance: " + str(aStar.getSolution()["distance"]))
