@@ -26,7 +26,11 @@ class Graph:
                 weightList.append(float(element))
             
             self.__adjMatrix.append(weightList)
-        
+
+        for row in self.__adjMatrix:
+            if len(row) != len(self.__adjMatrix):
+                raise Exception
+
         file.close()
 
     def buildNodeList(self, path):
