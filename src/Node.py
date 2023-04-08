@@ -1,8 +1,8 @@
 class Node:
     # === CONSTRUCTOR ===========================================================
-    def __init__(self, id):
-        self.x = None
-        self.y = None
+    def __init__(self, id, x=None, y=None):
+        self.x = x
+        self.y = y
         self.id = id
         self.parent = None
 
@@ -18,3 +18,9 @@ class Node:
 
     def getParent(self):
         return self.parent
+
+    def getX(self):
+        return self.x
+    
+    def getY(self):
+        return self.y
