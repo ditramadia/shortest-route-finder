@@ -1,6 +1,8 @@
+import math
+
 class AStar:
     # === CONSTRUCTOR ===========================================================
-    def __init__(self):
+    def __init__(self, wCoordinate = False):
         self.openList = set([])
         self.closedList = set([])
         self.solution = {
@@ -11,6 +13,7 @@ class AStar:
         self.gScore = {}
         self.hScore = {}
         self.last = {}
+        self.wCoordinate = wCoordinate
 
     # === GETTER SETTER ==========================================================
     def getSolution(self):
@@ -19,12 +22,15 @@ class AStar:
     # === UTILITY ================================================================
     
     # Initialize score and last with default value
-    def initialState(self, graph):
+    def initialState(self, graph, destinationNode):
         for node in graph.getNodeList():
-            self.hScore[int(node.getId())] = float(9999)
+            if self.wCoordinate:
+                self.hScore[int(node.getId())] = math.sqrt((((graph.getNodeList()[destinationNode - 1].getX()) - node.getX()) ** 2) + ((graph.getNodeList()[destinationNode - 1].getY() - node.getY()) ** 2))
+            else:
+                self.hScore[int(node.getId())] = float(9999)
             self.gScore[int(node.getId())] = float("inf")
             self.fScore[int(node.getId())] = float("inf")
-            self.last[int(node.getId())] = None    
+            self.last[int(node.getId())] = None
     
     # Update starting node score
     def updateStartingNode(self, startingNode):
@@ -71,7 +77,7 @@ class AStar:
 
     # === METHODS ===============================================================
     def findShortestPath(self, graph, startingNode, destinationNode):
-        self.initialState(graph)
+        self.initialState(graph, destinationNode)
         self.updateStartingNode(startingNode)
         while True:
             expandNode = self.determineExpandNode()

@@ -1,8 +1,11 @@
 import os
+import gmplot
+import webbrowser
 import Parser as par
 import Graph as gr
 import AStar as ast
 import UCS as ucs
+
 
 class Controller:
     # === CONSTRUCTOR ===========================================================
@@ -11,11 +14,16 @@ class Controller:
         self.__algorithm = None
         self.__mapPath = None
         self.__graph = None
+        self.__wCoordinate = False
+        self.solution = None
 
     # === STATES ================================================================
     def isRunning(self):
         return self.__isRunning
-    
+
+    def wCoordinate(self):
+        return self.__wCoordinate
+
     # === CONTROLS ==============================================================
     def start(self):
         os.system("cls")
@@ -24,7 +32,7 @@ class Controller:
     def solve(self):
         print("\nAvailable nodes:")
         for node in self.__graph.getNodeList():
-            print(f"({node.getId()}) ", end="") 
+            print(f"({node.getId()}) ", end="")
         print()
         parser = par.Parser()
 
@@ -44,7 +52,7 @@ class Controller:
                     raise Exception
                 isValid = True
             except:
-                errMsg="Node does not exist\n"
+                errMsg = "Node does not exist\n"
 
         isValid = False
         errMsg = ""
@@ -62,7 +70,7 @@ class Controller:
                     raise Exception
                 isValid = True
             except:
-                errMsg="Node does not exist\n"
+                errMsg = "Node does not exist\n"
 
         print("\nSolution:")
         if self.__algorithm == "1":
@@ -71,18 +79,32 @@ class Controller:
 
             print("Path: " + str(uCs.getSolution()["path"]))
             print("Distance: " + str(uCs.getSolution()["cost"]))
+            self.__solution = uCs.getSolution()
 
         elif self.__algorithm == "2":
-            aStar = ast.AStar()
-            aStar.findShortestPath(self.__graph, int(startingNode), int(destinationNode))
+            aStar = ast.AStar(self.__wCoordinate)
+            aStar.findShortestPath(self.__graph, int(
+                startingNode), int(destinationNode))
 
             print("Path: " + str(aStar.getSolution()["path"]))
             print("Distance: " + str(aStar.getSolution()["distance"]))
+            self.__solution = aStar.getSolution()
 
     def stop(self):
         self.__isRunning = False
 
     # === IO ====================================================================
+    def mode(self):
+        parser = par.Parser()
+        print("\nWith coordinates? (y/n)")
+        parser.readCommand()
+        if parser.getData() == "n" or parser.getData() == "N":
+            self.__wCoordinate = False
+        elif parser.getData() == "y" or parser.getData() == "Y":
+            self.__wCoordinate = True
+        else:
+            raise Exception
+    
     def readMap(self):
         isValid = False
         errMsg = ""
@@ -95,11 +117,11 @@ class Controller:
                 parser.readCommand()
                 self.__mapPath = parser.getData()
                 self.__graph = gr.Graph()
-                self.__graph.build(self.__mapPath)
+                self.__graph.build(self.__mapPath, self.__wCoordinate)
                 isValid = True
             except:
                 errMsg = "File is invalid\n"
-    
+
     def readAlgorithm(self):
         isValid = False
         errMsg = ""
@@ -118,7 +140,7 @@ class Controller:
                 isValid = True
             except:
                 errMsg = "Algorithm is unavailable\n"
-    
+
     def menu(self):
         parser = par.Parser()
         print("\nTry again? (y/n)")
@@ -128,7 +150,7 @@ class Controller:
         elif parser.getData() == "y" or parser.getData() == "Y":
             self.start()
             pass
-    
+
     # === DISPLAY ===============================================================
     def displaySplash(self):
         print("\n      SHORTEST ROUTE FINDER     ")
@@ -136,3 +158,25 @@ class Controller:
         print("\nKelvin Rayhan Alkarim (13521005)")
         print(" Ditra Rizqa Amadia (13521019) ")
 
+    def plotter(self):
+        gmap = gmplot.GoogleMapPlotter(-6.901837, 107.601241, 13)
+
+        for node in self.__graph.getNodeList():
+            for node2 in self.__graph.getNodeList():
+                if self.__graph.getAdjMatrix()[node.getId() - 1][node2.getId() - 1] > 0:
+                    lats = [node.getX(), node2.getX()]
+                    lngs = [node.getY(), node2.getY()]
+                    gmap.scatter(lats, lngs, '#FFA54F', size=10, marker=False)
+                    gmap.plot(lats, lngs, '#FFA54F', edge_width=2.5)
+
+        latsSolution = []
+        lngsSolution = []
+        for node in self.__solution["path"]:
+            latsSolution.append(self.__graph.getNodeList()[node - 1].getX())
+            lngsSolution.append(self.__graph.getNodeList()[node - 1].getY())
+        
+        gmap.scatter(latsSolution, lngsSolution, '#63B8FF', size=10, marker=False)
+        gmap.plot(latsSolution, lngsSolution, '#63B8FF', edge_width=3.5)
+        gmap.draw(f"./test/{self.__mapPath}.html")
+        webbrowser.open_new_tab(f"file:///" + os.getcwd() + "/test/" + self.__mapPath + ".html")
+        print("\nDisplaying map in local browser...")
