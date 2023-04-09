@@ -75,7 +75,7 @@ class Controller:
         print("\nSolution:")
         if self.__algorithm == "1":
             uCs = ucs.UCS()
-            uCs.search(self.__graph, 1, 6)
+            uCs.search(self.__graph, int(startingNode), int(destinationNode))
 
             print("Path: " + str(uCs.getSolution()["path"]))
             print("Distance: " + str(uCs.getSolution()["cost"]))
