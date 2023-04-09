@@ -3,6 +3,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import * 
 from PyQt5.QtCore import *
 import os
+import Controller
 
 class MainWindow(QMainWindow):
     # === CONSTRUCTOR ===========================================================
@@ -12,6 +13,8 @@ class MainWindow(QMainWindow):
         self.pushButton.clicked.connect(self.toggleMenu)
         self.search_btn.clicked.connect(self.toggleMenu)
         self.import_btn.clicked.connect(self.openFileDialog)
+
+        self.__controller = Controller.Controller()
         self.start_node = self.start_input.text()
         self.end_node = self.end_input.text()
         if self.radioButton.isChecked():
@@ -42,10 +45,12 @@ class MainWindow(QMainWindow):
         self.animation.start()
 
     def openFileDialog(self):
-        # Open the file dialog and get the selected file path
-        self.filePath, _ = QFileDialog.getOpenFileName(self, 'Open file', '', 'Text files (*.txt)')
-        self.fileName = os.path.basename(self.filePath)
-        if self.filePath:
-            self.file_label.setText(self.fileName)
-        
-        
+        filePath, _ = QFileDialog.getOpenFileName(self, 'Open file', '', 'Text files (*.txt)')
+        fileName = os.path.basename(filePath)
+        if filePath:
+            try:
+                self.__controller.importFile(filePath, fileName)
+                self.file_label.setText(fileName)
+            except Exception as err:
+                print(f"File input error (Ini belum dihandle): {err.args}")
+            

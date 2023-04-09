@@ -356,6 +356,9 @@ padding-left: 5
         <bold>true</bold>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
       </property>
@@ -364,7 +367,6 @@ padding-left: 5
 background-color: rgb(143,115,101);
 color: rgb(220,220,220);
 border: none;
-transition: 0.5s;
 }
 
 QPushButton:hover {
@@ -380,7 +382,7 @@ background-color: rgb(176,153,141)
        <rect>
         <x>20</x>
         <y>440</y>
-        <width>82</width>
+        <width>61</width>
         <height>21</height>
        </rect>
       </property>
@@ -389,6 +391,9 @@ background-color: rgb(176,153,141)
         <family>Montserrat Medium</family>
         <pointsize>10</pointsize>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">QRadioButton {
@@ -419,7 +424,7 @@ QRadioButton::indicator::checked {
        <rect>
         <x>130</x>
         <y>440</y>
-        <width>82</width>
+        <width>41</width>
         <height>21</height>
        </rect>
       </property>
@@ -428,6 +433,9 @@ QRadioButton::indicator::checked {
         <family>Montserrat Medium</family>
         <pointsize>10</pointsize>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">QRadioButton {
@@ -475,6 +483,9 @@ QRadioButton::indicator::checked {
        <height>50</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">QFrame {
 background-color: rgb(41,41,41);
@@ -497,12 +508,14 @@ border-radius: 25px;
         <height>25</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
 background: url(&quot;src/asset/setting.png&quot;);
 background-repeat: none;
 background-position: center;
-background-size: 25px 25px;
 border-radius: 25px;
 }
 
