@@ -24,14 +24,14 @@ class MainWindow(QMainWindow):
         self.web_view.setFixedHeight(720)
         self.plot.hide()
 
-        # widget_size = self.plot.size()
-        # self.figure = Figure.Figure(figsize=(widget_size.width(), widget_size.height()))
-        # self.figure.set_size_inches(widget_size.width()/100, widget_size.height()/120)
-        # self.canvas = FigureCanvas(self.figure)
-        # self.canvas.setParent(self.plot)
-        # self.graph = self.figure.add_subplot(111)
-        # self.graph.set_axis_off()
-        # self.canvas.hide()
+        widget_size = self.plot.size()
+        self.figure = Figure.Figure(figsize=(widget_size.width(), widget_size.height()))
+        self.figure.set_size_inches(widget_size.width()/100, widget_size.height()/120)
+        self.canvas = FigureCanvas(self.figure)
+        self.canvas.setParent(self.plot)
+        self.graph = self.figure.add_subplot(111)
+        self.graph.set_axis_off()
+        self.canvas.hide()
 
         self.solution.hide()
         self.popup_container.hide()
@@ -71,22 +71,12 @@ class MainWindow(QMainWindow):
                 self.popup_container.hide()
                 self.plot.hide()
 
-                if not self.__controller.getGraph().getIsWCoordinate():
-                    widget_size = self.plot.size()
-                    self.figure = Figure.Figure(figsize=(widget_size.width(), widget_size.height()))
-                    self.figure.set_size_inches(widget_size.width()/100, widget_size.height()/120)
-                    self.canvas = FigureCanvas(self.figure)
-                    self.canvas.setParent(self.plot)
-                    self.graph = self.figure.add_subplot(111)
-                    self.graph.set_axis_off()
-                    self.canvas.hide()
-                    
             except Exception as err:
                 self.popup_value.setText(f"Input file error: {err.args[0]}")
                 self.popup_container.show()
 
     def createGMPlot(self):
-        gmap = gmplot.GoogleMapPlotter(-6.901837, 107.601241, 13, apikey="", map_type="satellite")
+        gmap = gmplot.GoogleMapPlotter(-6.901837, 107.601241, 13)
 
         for node in self.__controller.getGraph().getNodeList():
             for node2 in self.__controller.getGraph().getNodeList():
@@ -153,8 +143,9 @@ class MainWindow(QMainWindow):
 
             if self.__controller.getGraph().getIsWCoordinate():
                 self.canvas.hide()
-                self.plot.show()
+                self.createGMPlot()
                 self.web_view.setUrl(QtCore.QUrl.fromLocalFile(os.path.abspath("test/temp.html")))
+                self.plot.show()
             else:
                 self.plot.show()
                 network = self.createNetworkX()
@@ -173,9 +164,3 @@ class MainWindow(QMainWindow):
         except Exception as err:
             self.popup_value.setText(f"Input file error: {err.args[0]}")
             self.popup_container.show()
-
-        
-        
-       
-        
-        
