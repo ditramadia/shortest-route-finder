@@ -16,6 +16,9 @@ class Graph:
 
     def getNodeList(self):
         return self.__nodeList  
+    
+    def getIsWCoordinate(self):
+        return self.__isWCoordinate
 
     # === INITIALIZER ===========================================================
     def validateFileFormat(self):

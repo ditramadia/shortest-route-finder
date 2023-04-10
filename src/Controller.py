@@ -1,6 +1,7 @@
 import Graph
 import UCS
 import AStar
+import Plotter
 
 class Controller:
     # === CONSTRUCTOR ===========================================================
@@ -9,6 +10,9 @@ class Controller:
         self.__solution = None
 
     # === GETTER SETTER =========================================================
+    def getSolution(self):
+        return self.__solution
+    
     def getSolutionDistance(self):
         return self.__solution["distance"]
     
@@ -22,6 +26,9 @@ class Controller:
             route += str(node) + " - "
             i += 1
         return route
+    
+    def getGraph(self):
+        return self.__graph
 
     # === VALIDATOR =============================================================
     def isNodeValid(self, nodeId):
@@ -45,3 +52,7 @@ class Controller:
             aStarAlgorithm = AStar.AStar()
             aStarAlgorithm.findShortestPath(self.__graph, startNodeId, endNodeId)
             self.__solution = aStarAlgorithm.getSolution()
+
+    def plot(self):
+        plotter = Plotter.Plotter()
+        plotter.plot(self.__graph, self.__solution)
