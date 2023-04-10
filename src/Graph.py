@@ -1,9 +1,12 @@
-import Node as nd
 import math
+import Node
 
 class Graph:
     # === CONSTRUCTOR ===========================================================
-    def __init__(self):
+    def __init__(self, filePath, fileName):
+        self.__filePath = filePath
+        self.__fileName = fileName
+        self.__isWCoordinate = False
         self.__adjMatrix = []
         self.__nodeList = []
 
@@ -12,19 +15,80 @@ class Graph:
         return self.__adjMatrix
 
     def getNodeList(self):
-        return self.__nodeList    
+        return self.__nodeList  
+    
+    def getIsWCoordinate(self):
+        return self.__isWCoordinate
 
     # === INITIALIZER ===========================================================
-    def buildAdjMatrix(self, path, wCoordinate):
+    def validateFileFormat(self):
+
+        file = open(self.__filePath)
+        charMatrix = []
+        for line in file:
+            charMatrix.append(line.replace("\n", "").split())
+        file.close()
+
+        if len(charMatrix) == len(charMatrix[0]):
+            for charList in charMatrix:
+                if len(charList) != len(charMatrix):
+                    raise Exception("The number of rows and columns does not match")
+                for char in charList:
+                    try:
+                        float(char)
+                    except:
+                        raise Exception("All characters must be a numerical value")
+            self.__isWCoordinate = False
+        elif len(charMatrix) + 2 == len(charMatrix[0]):
+            for charList in charMatrix:
+                if len(charList) != 2 + len(charMatrix):
+                    raise Exception("The number of rows and columns does not match")
+                for char in charList:
+                    try:
+                        float(char)
+                    except:
+                        raise Exception("All characters must be a numerical value")
+            self.__isWCoordinate = True
+        else:
+            raise Exception("The number of rows and columns does not match")
+    
+    def buildNodes(self):
+        self.__nodeList = []
+
+        file = open(self.__filePath, "r")
+        nodeId = 1
+        for line in file:
+            charList = line.replace("\n", "").split()
+            if self.__isWCoordinate:
+                newNode = Node.Node(nodeId, float(charList[len(charList) - 2]), float(charList[len(charList) - 1]))
+            else:
+                newNode = Node.Node(nodeId)
+            self.__nodeList.append(newNode)
+            nodeId += 1
+        file.close()
+
+        # print(self.__isWCoordinate)
+        # print()
+        # for node in self.__nodeList:
+        #     print(node.getId(), end=" ")
+        # print()
+        # for node in self.__nodeList:
+        #     print(node.getX(), end=" ")
+        # print()
+        # for node in self.__nodeList:
+        #     print(node.getY(), end=" ")
+        # print()
+    
+    def buildAdjMatrix(self):
         self.__adjMatrix = []
 
-        file = open(f"./test/{path}.txt", "r")
+        file = open(self.__filePath, "r")
         i = 0
         for line in file:
             charList = line.replace("\n", "").split()
             weightList = []
-            
-            if wCoordinate:
+
+            if self.__isWCoordinate:
                 for j in range(0, len(charList) - 2):
                     weightList.append(math.sqrt(((self.__nodeList[i].getX() - self.__nodeList[j].getX()) ** 2) + ((self.__nodeList[i].getY() - self.__nodeList[j].getY()) ** 2)) * float(charList[j]))
             else:
@@ -33,57 +97,9 @@ class Graph:
             
             self.__adjMatrix.append(weightList)
             i += 1
-
-        for row in self.__adjMatrix:
-            if len(row) != len(self.__adjMatrix):
-                raise Exception
-
         file.close()
 
-    def buildNodeList(self, path, wCoordinate):
-        self.__nodeList = []
-
-        file = open(f"./test/{path}.txt", "r")
-        i = 1
-        for line in file:
-            charList = line.replace("\n", "").split()
-            if wCoordinate:
-                newNode = nd.Node(i, float(charList[len(charList) - 2]), float(charList[len(charList) - 1]))
-            else:
-                newNode = nd.Node(i)
-
-            self.__nodeList.append(newNode)
-
-            i += 1 
-        file.close()
-        # for node in self.__nodeList:
-        #     print(node.getX(), end=" ")
-        # print()
-        # for node in self.__nodeList:
-        #     print(node.getY(), end=" ")
-
-    def build(self, path, wCoordinate):
-        self.buildNodeList(path, wCoordinate)
-        self.buildAdjMatrix(path, wCoordinate)
-
-    def getAdjMatrix(self):
-        return self.__adjMatrix
-
-    def getNodeList(self):
-        return self.__nodeList
-        
-    # === DISPLAY  ==============================================================
-    def printAdjMatrix(self):
-        print("[")
-        for row in self.__adjMatrix:
-            print("[", end="")
-            for element in row:
-                print(str(element) + " ", end="")
-            print("]")
-        print("]")
-
-    def printNodeList(self):
-        print("[", end="")
-        for node in self.__nodeList:
-            print(str(node.getId()) + ",", end="")
-        print("]")
+    def build(self):
+        self.validateFileFormat()
+        self.buildNodes()
+        self.buildAdjMatrix()

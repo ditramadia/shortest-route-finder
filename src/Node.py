@@ -9,9 +9,6 @@ class Node:
     # === GETTER SETTER =========================================================
     def getId(self):
         return self.id
-        
-    def getId(self):
-        return self.id
     
     def setParent(self, parent):
         self.parent = parent    
