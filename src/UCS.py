@@ -6,7 +6,7 @@ class UCS:
         self.queue = []
         self.solution = {
              "path" : [],
-             "cost" : None
+             "distance" : None
         }
     
     # === GETTER SETTER ==========================================================
@@ -32,7 +32,7 @@ class UCS:
                             if (node.getId() == start):
                                 break
                             node = listnode[node.getParent() - 1]
-                        self.solution["cost"] = current[1]
+                        self.solution["distance"] = current[1]
                         self.solution["path"].reverse()
                         break
                 

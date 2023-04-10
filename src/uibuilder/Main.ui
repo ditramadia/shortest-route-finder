@@ -124,35 +124,11 @@ background-color: rgb(40,40,40)
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="version">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>680</y>
-        <width>71</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Montserrat</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel {
-color: rgb(190,190,190)
-}</string>
-      </property>
-      <property name="text">
-       <string>Ver 1.0.0</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="import_btn">
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>250</y>
+        <y>220</y>
         <width>101</width>
         <height>31</height>
        </rect>
@@ -188,7 +164,7 @@ background-color: rgb(176,153,141)
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>250</y>
+        <y>220</y>
         <width>181</width>
         <height>31</height>
        </rect>
@@ -216,7 +192,7 @@ border: 1px solid rgb(143,115,101)
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>320</y>
+        <y>290</y>
         <width>181</width>
         <height>31</height>
        </rect>
@@ -243,7 +219,7 @@ border: 1px solid rgb(154,131,101)
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>320</y>
+        <y>290</y>
         <width>101</width>
         <height>31</height>
        </rect>
@@ -279,7 +255,7 @@ padding-left: 5;
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>370</y>
+        <y>340</y>
         <width>181</width>
         <height>31</height>
        </rect>
@@ -307,7 +283,7 @@ padding-left: 5px
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>370</y>
+        <y>340</y>
         <width>101</width>
         <height>31</height>
        </rect>
@@ -343,7 +319,7 @@ padding-left: 5
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>500</y>
+        <y>470</y>
         <width>281</width>
         <height>31</height>
        </rect>
@@ -381,7 +357,7 @@ background-color: rgb(176,153,141)
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>440</y>
+        <y>410</y>
         <width>61</width>
         <height>21</height>
        </rect>
@@ -423,7 +399,7 @@ QRadioButton::indicator::checked {
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>440</y>
+        <y>410</y>
         <width>41</width>
         <height>21</height>
        </rect>
@@ -461,10 +437,32 @@ QRadioButton::indicator::checked {
        <string>A*</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>690</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Montserrat</family>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+color: rgb(190,190,190)
+}</string>
+      </property>
+      <property name="text">
+       <string>Ver 1.0.0</string>
+      </property>
+     </widget>
      <zorder>file_label</zorder>
      <zorder>header1</zorder>
      <zorder>header2</zorder>
-     <zorder>version</zorder>
      <zorder>import_btn</zorder>
      <zorder>start_label</zorder>
      <zorder>start_input</zorder>
@@ -473,6 +471,7 @@ QRadioButton::indicator::checked {
      <zorder>search_btn</zorder>
      <zorder>radioButton</zorder>
      <zorder>radioButton_2</zorder>
+     <zorder>label</zorder>
     </widget>
     <widget class="QFrame" name="sidebar_btn">
      <property name="geometry">
@@ -525,6 +524,167 @@ border-radius: 25px;
        <string/>
       </property>
      </widget>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="solution">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>440</y>
+      <width>321</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+background-color: rgb(41,41,41)
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="solution_label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>15</y>
+       <width>281</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Montserrat</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+color: rgb(220,220,220)
+}</string>
+     </property>
+     <property name="text">
+      <string>Shortest Route</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="distance_label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>181</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Montserrat Medium</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+background-color: rgb(31,31,31);
+color: rgb(154,131,101);
+padding-left: 5px;
+border: 1px solid rgb(154,131,101)
+}</string>
+     </property>
+     <property name="text">
+      <string>Distance</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="distance_value">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>50</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Montserrat Medium</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+background-color: rgb(31,31,31);
+color: rgb(220,220,220);
+padding-left: 5px;
+border: 1px solid rgb(154,131,101)
+}</string>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="route_label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>281</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Montserrat Medium</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+background-color: rgb(31,31,31);
+color: rgb(154,131,101);
+padding-left: 5px;
+border: 1px solid rgb(154,131,101)
+}</string>
+     </property>
+     <property name="text">
+      <string>Route</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="route_value">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>130</y>
+       <width>281</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Montserrat Medium</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+background-color: rgb(31,31,31);
+color: rgb(220,220,220);
+padding: 5px;
+border: 1px solid rgb(154,131,101)
+}</string>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+     </property>
     </widget>
    </widget>
   </widget>
