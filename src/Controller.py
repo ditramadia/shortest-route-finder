@@ -26,6 +26,9 @@ class Controller:
             i += 1
         return route
     
+    def getSolutionRouteList(self):
+        return self.__solution["path"]
+    
     def getGraph(self):
         return self.__graph
 
