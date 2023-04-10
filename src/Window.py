@@ -1,9 +1,10 @@
+import os
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import * 
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5 import QtCore
 from PyQt5.QtCore import *
-import os
+import gmplot
 import Controller
 
 class MainWindow(QMainWindow):
@@ -55,9 +56,31 @@ class MainWindow(QMainWindow):
                 self.solution.hide()
                 self.file_label.setText(fileName)
                 self.popup_container.hide()
+                self.plot.hide()
             except Exception as err:
                 self.popup_value.setText(f"Input file error: {err.args[0]}")
                 self.popup_container.show()
+
+    def createGMPlot(self):
+        gmap = gmplot.GoogleMapPlotter(-6.901837, 107.601241, 13, apikey="", map_type="satellite")
+
+        for node in self.__controller.getGraph().getNodeList():
+            for node2 in self.__controller.getGraph().getNodeList():
+                if self.__controller.getGraph().getAdjMatrix()[node.getId() - 1][node2.getId() - 1] > 0:
+                    lats = [node.getX(), node2.getX()]
+                    lngs = [node.getY(), node2.getY()]
+                    gmap.scatter(lats, lngs, '#FFA54F', size=10, marker=False)
+                    gmap.plot(lats, lngs, '#FFA54F', edge_width=2.5)
+
+        latsSolution = []
+        lngsSolution = []
+        for node in self.__controller.getSolution()["path"]:
+            latsSolution.append(self.__controller.getGraph().getNodeList()[node - 1].getX())
+            lngsSolution.append(self.__controller.getGraph().getNodeList()[node - 1].getY())
+            
+        gmap.scatter(latsSolution, lngsSolution, '#63B8FF', size=10, marker=False)
+        gmap.plot(latsSolution, lngsSolution, '#63B8FF', edge_width=3.5)
+        gmap.draw(f"./test/temp.html")
     
     def searchRoute(self):
         # try:
@@ -101,8 +124,6 @@ class MainWindow(QMainWindow):
             self.solution_label.setText("Shortest Route (A*)")
             self.__controller.search(False, int(self.start_input.text()), int(self.end_input.text()))
 
-        print(self.__controller.getSolution()["path"])
-        self.__controller.plot()
         if self.__controller.getGraph().getIsWCoordinate:
             self.web_view.setUrl(QtCore.QUrl.fromLocalFile(os.path.abspath("test/temp.html")))
             self.plot.show()
