@@ -59,12 +59,13 @@ Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple applic
 
 ### Built With
 
-* [![Python][python][python-url]
-* [![HTML][html]
+* [![Python][Python.py]][Python-url]
+* [![HTML][HTML.html]][HTML-url]
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [product-screenshot]: public/application-preview.png
-[python]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
-[python-url]: https://www.python.org/
-[html]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white 
+[Python.py]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
+[Python-url]: https://www.python.org/
+[HTML.html]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white 
+[HTML-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
