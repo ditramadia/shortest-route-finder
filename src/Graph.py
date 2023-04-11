@@ -66,18 +66,6 @@ class Graph:
             self.__nodeList.append(newNode)
             nodeId += 1
         file.close()
-
-        # print(self.__isWCoordinate)
-        # print()
-        # for node in self.__nodeList:
-        #     print(node.getId(), end=" ")
-        # print()
-        # for node in self.__nodeList:
-        #     print(node.getX(), end=" ")
-        # print()
-        # for node in self.__nodeList:
-        #     print(node.getY(), end=" ")
-        # print()
     
     def buildAdjMatrix(self):
         self.__adjMatrix = []
