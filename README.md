@@ -21,10 +21,10 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-        <a href="#about">About The Project</a>
+        <a href="#about-the-project">About The Project</a>
         <ul>
             <li><a href="specification">Specification</a>
-            <li><a href="builtwith">Built With</a>
+            <li><a href="built-with">Built With</a>
         </ul>
     </li>
     <li>
@@ -45,38 +45,26 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-[![Product Name Screen Shot][product-screenshot]](public/application-preview.png)
+[![Product Name Screen Shot][product-screenshot]](https://github.com/ditramadia/Tucil3_13521005_13521019)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple application to solve shortest-path problem using Uniform Cost Search (UCS) and A*. 
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+### Specification
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+* Program is able to read a graph represented by adjacency matrix from a text file
+* Program is able to find the shortest path using UCS algorithm
+* Program is able to find the shortest path using A* algorithm
+* Program is able to visualize the solution path and distance
+* Bonus: Program is able to visualize the solution path using Google Map API
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+* [![Python][python][python-url]
+* [![HTML][html]
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [product-screenshot]: public/application-preview.png
+[python]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
+[python-url]: https://www.python.org/
+[html]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white 
