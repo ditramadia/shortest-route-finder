@@ -132,7 +132,7 @@ Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple applic
 <br/> 
 2. Or create your own graph file
 - Adjacency Cost Matrix
-```
+```ssh
 0 0 2000 0 0 0 0 0 0 0 0 0
 0 0 0 2500 0 0 0 0 0 0 0 0
 2000 0 0 1500 800 0 0 0 0 0 0 0
@@ -147,7 +147,7 @@ Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple applic
 0 0 0 0 0 0 0 1500 0 0 0 0
 ```
 - Adjacency Matrix with coordinates
-```
+```ssh
 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 -6.91625368796845 107.66807053929479
 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -6.916462676343243 107.66768777505051
 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -6.916791991170412 107.66796208942557
