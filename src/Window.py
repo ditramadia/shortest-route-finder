@@ -164,3 +164,4 @@ class MainWindow(QMainWindow):
         except Exception as err:
             self.popup_value.setText(f"Input file error: {err.args[0]}")
             self.popup_container.show()
+            QtCore.QTimer.singleShot(5000, lambda: self.popup_container.hide())
