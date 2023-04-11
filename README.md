@@ -62,6 +62,45 @@ Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple applic
 * [![Python][Python.py]][Python-url]
 * [![HTML][HTML.html]][HTML-url]
 
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+* gmplot
+  ```sh
+  pip install gmplot
+  ```
+* PyQt
+  ```sh
+  pip install pyqt5
+  ```
+* matplotlib
+  ```sh
+  pip install matplotlib
+  ```
+* networkx
+  ```sh
+  pip install networkx
+  ```
+* scipy
+  ```sh
+  pip install scipy
+  ```
+
+### Installation
+1. Clone the repo
+   ```sh
+   git clone https://github.com/ditramadia/Tucil3_13521005_13521019.git
+   ```
+2. Go to the repository root folder `Tucil3_13521005_13521019`
+   ```sh
+   cd Tucil3_13512005_13521019
+   ```
+3. Run the program `main.py`
+   ```sh
+   python src/main.py
+   ```
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [product-screenshot]: public/application-preview.png
