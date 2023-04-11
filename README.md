@@ -10,7 +10,7 @@
   <p align="center">
     IF2211 Strategi Algoritma
     <br />
-    <a href="doc/Tucil3_13521005-13521019.pdf"><strong>Laporan »</strong></a>
+    <a href="https://github.com/ditramadia/Tucil3_13521005_13521019/blob/main/doc/Tucil3_13521005_13521019_.pdf"><strong>Laporan »</strong></a>
     <br />
     <br />
   </p>
@@ -43,6 +43,8 @@
     </li>
   </ol>
 </details>
+<br/>
+<br/>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -82,6 +84,8 @@ Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple applic
 │    └── Window.py
 └───doc                     # Documentation
 ```
+<br/>
+<br/>
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -121,6 +125,8 @@ Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple applic
    ```sh
    python src/main.py
    ```
+<br/>
+<br/>
 
 <!-- USAGE -->
 ## Usage
@@ -178,10 +184,13 @@ Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple applic
     <br/> <img src="public/usage-search.png" alt="Logo" width="1280" height="400">
     <br/> 
     <br/> 
+<br/>
+<br/>
+
 
 <!-- AUTHOR -->
 
-### AUTHORS
+### Authors
 
 | NIM | Name |
 | :---: | :---: |
