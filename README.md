@@ -133,7 +133,7 @@ Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple applic
 
 1. Import an existing graph file from `test` folder
     <br/> 
-    <br/> <img src="public/usage-import.png" alt="Logo" width="1280" height="400">
+    <br/> <img src="public/usage-import.png" alt="Logo" width="1280">
     <br/> 
     <br/> 
 2. Or create your own graph file 
@@ -176,12 +176,12 @@ Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple applic
     ``` 
 3. Choose start node, end node, and algorithm to use
     <br/> 
-    <br/> <img src="public/usage-input.png" alt="Logo" width="1280" height="400">
+    <br/> <img src="public/usage-input.png" alt="Logo" width="1280">
     <br/> 
     <br/> 
 4. Search!
     <br/> 
-    <br/> <img src="public/usage-search.png" alt="Logo" width="1280" height="400">
+    <br/> <img src="public/usage-search.png" alt="Logo" width="1280">
     <br/> 
     <br/> 
 <br/>
@@ -192,10 +192,10 @@ Tucil 3 of Design of Algorithms (IF2211). Shortest Route Finder, a simple applic
 
 ### Authors
 
-| NIM | Name |
-| :---: | :---: |
-| 13521005 | Kelvin Rayhan Alkarim |
-| 13521019 | Ditra Rizqa Amadia |
+| NIM | Name | Contribution |
+| :---: | :---: | :---: |
+| 13521005 | Kelvin Rayhan Alkarim | GUI, UCS, Documentation
+| 13521019 | Ditra Rizqa Amadia | Program, A*, Documentation
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
